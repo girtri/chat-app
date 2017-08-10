@@ -1,0 +1,3 @@
+
+.. per eseguire la build del progetto:
+npm run build
