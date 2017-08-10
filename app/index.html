@@ -5,11 +5,9 @@
 	<title>Hello World!</title>
 </head>
 <body>
-	<ul>
-		<li id="app"></li>
-		<li id="os"></li>
-		<li id="electronVer"></li>
-	</ul>
-	<script src="./renderer.js"></script>
+	<app></app>
+	<script>
+		require("./build/renderer.js");
+	</script>
 </body>
 </html>
