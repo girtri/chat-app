@@ -3,7 +3,7 @@ const { join } = require( "path" ),
   webpack = require( "webpack" );
 
 module.exports = {
-  entry: join( __dirname, "app/renderer.jsx" ),
+  entry: join( __dirname, "app/js/renderer.jsx" ),
   target: "electron-renderer",
   output: {
       path: join( __dirname, "app/build" ),
