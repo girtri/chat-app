@@ -18,6 +18,9 @@ function createWindow() {
 		width: 1000, height: 600
 	});
 
+	// nascondo il menu di Electron!
+	mainWindow.setMenu(null);
+
 	mainWindow.loadURL( url.format({
 		pathname: path.join( __dirname, "index.html" ),
 		protocol: "file:",

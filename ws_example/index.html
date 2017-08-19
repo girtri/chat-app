@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Echo</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    <div class="container">
+      <form id="form">
+        <input id="input" placeholder="Enter you message..." />
+        <button>Submit</button>
+      </form>
+      <output id="output"></output>
+    </div>
+
+    <script>
+      const HOST = "127.0.0.1",
+            PORT = 8001,
+            form = document.getElementById( "form" ),
+            input = document.getElementById( "input" ),
+            output = document.getElementById( "output" );
+
+      const ws = new WebSocket( `ws://${HOST}:${PORT}` );
+
+      ws.addEventListener( "error", ( e ) => {
+        console.error( "Client's error: ", e );
+      });
+
+      ws.addEventListener( "open", () => {
+        console.log( "Client connected" );
+      });
+
+      ws.addEventListener( "message", e => {
+        output.innerHTML = e.data + "<br \>" + output.innerHTML;
+      });
+
+      form.addEventListener( "submit", ( e ) => {
+        e.preventDefault();
+        ws.send( input.value );
+        input.value = '';
+      });
+    </script>
+  </body>
+</html>

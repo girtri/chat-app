@@ -10241,10 +10241,44 @@ function Footer() {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_electron__ = __webpack_require__(201);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_electron___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_electron__);
 
+
+
+const win = __WEBPACK_IMPORTED_MODULE_1_electron__["remote"].getCurrentWindow();
 
 class Header extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
+	constructor(props) {
+		super(props);
+
+		this.onRestore = () => {
+			win.restore();
+		};
+
+		this.onMaximize = () => {
+			win.maximize();
+		};
+
+		this.onClose = () => {
+			win.close();
+		};
+
+		this.updateState = () => {
+			this.setState({ isMaximized: win.isMaximized() });
+		};
+
+		this.state = { isMaximized: win.isMaximized() };
+	}
+
+	componentWillMount() {
+		win.on("maximize", this.updateState);
+		win.on("unmaximize", this.updateState);
+	}
+
 	render() {
+		const { isMaximized } = this.state;
+
 		return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 			"header",
 			{ className: "toolbar toolbar-header" },
@@ -10253,8 +10287,17 @@ class Header extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 				{ className: "toolbar-actions" },
 				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 					"button",
-					{ className: "btn btn-default pull-right" },
+					{ className: "btn btn-default pull-right", onClick: this.onClose },
 					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("span", { className: "icon icon-cancel" })
+				),
+				isMaximized ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+					"button",
+					{ className: "btn btn-default pull-right", onClick: this.onRestore },
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("span", { className: "icon icon-resize-small" })
+				) : __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+					"button",
+					{ className: "btn btn-default pull-right", onClick: this.onMaximize },
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("span", { className: "icon icon-resize-full" })
 				)
 			)
 		);
@@ -23033,6 +23076,12 @@ module.exports = function (css) {
 /***/ (function(module, exports) {
 
 module.exports = {"name":"chat","version":"1.0.0","main":"./app/main.js","scripts":{"start":"electron .","dev":"webpack -d --watch","build":"webpack"},"dependencies":{"photonkit":"^0.1.2","prop-types":"^15.5.7","react":"^15.4.2","react-dom":"^15.4.2"},"devDependencies":{"babel-core":"^6.22.1","babel-loader":"^6.2.10","babel-plugin-transform-class-properties":"^6.23.0","babel-preset-es2017":"^6.22.0","babel-preset-react":"^6.22.0","css-loader":"^0.28.0","style-loader":"^0.16.1","file-loader":"^0.11.1","devtron":"^1.4.0","electron":"^1.6.2","electron-debug":"^1.1.0","electron-devtools-installer":"^2.2.0","webpack":"^2.2.1"}}
+
+/***/ }),
+/* 201 */
+/***/ (function(module, exports) {
+
+module.exports = require("electron");
 
 /***/ })
 /******/ ]);
