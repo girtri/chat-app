@@ -23075,7 +23075,7 @@ module.exports = function (css) {
 /* 200 */
 /***/ (function(module, exports) {
 
-module.exports = {"name":"chat","version":"1.0.0","main":"./app/main.js","scripts":{"start":"electron .","dev":"webpack -d --watch","build":"webpack"},"dependencies":{"photonkit":"^0.1.2","prop-types":"^15.5.7","react":"^15.4.2","react-dom":"^15.4.2"},"devDependencies":{"babel-core":"^6.22.1","babel-loader":"^6.2.10","babel-plugin-transform-class-properties":"^6.23.0","babel-preset-es2017":"^6.22.0","babel-preset-react":"^6.22.0","css-loader":"^0.28.0","style-loader":"^0.16.1","file-loader":"^0.11.1","devtron":"^1.4.0","electron":"^1.6.2","electron-debug":"^1.1.0","electron-devtools-installer":"^2.2.0","webpack":"^2.2.1"}}
+module.exports = {"name":"chat","version":"1.0.0","main":"./app/main.js","scripts":{"start":"electron .","dev":"webpack -d --watch","build":"webpack"},"dependencies":{"nodejs-websocket":"^1.7.1","photonkit":"^0.1.2","prop-types":"^15.5.7","react":"^15.4.2","react-dom":"^15.4.2"},"devDependencies":{"babel-core":"^6.22.1","babel-loader":"^6.2.10","babel-plugin-transform-class-properties":"^6.23.0","babel-preset-es2017":"^6.22.0","babel-preset-react":"^6.22.0","css-loader":"^0.28.0","style-loader":"^0.16.1","file-loader":"^0.11.1","devtron":"^1.4.0","electron":"^1.6.2","electron-debug":"^1.1.0","electron-devtools-installer":"^2.2.0","webpack":"^2.2.1"}}
 
 /***/ }),
 /* 201 */
