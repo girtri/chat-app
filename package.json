@@ -9,7 +9,11 @@
 		"dist": "build"
 	},
 	"build": {
-		"appId": "com.example.chat"
+		"appId": "com.example.chat",
+		"nsis": {
+			"oneClick": false,
+			"allowToChangeInstallationDirectory": true
+    	}
 	},
 	"dependencies": {
 		"nodejs-websocket": "^1.7.1",
