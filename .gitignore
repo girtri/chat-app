@@ -1,3 +1,4 @@
 /node_modules/
+/dist/
 ws_example/node_modules/
 jest/node_modules/

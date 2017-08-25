@@ -5,7 +5,11 @@
 	"scripts": {
 		"start": "electron .",
 		"dev": "webpack -d --watch",
-		"build": "webpack"
+		"build": "webpack",
+		"dist": "build"
+	},
+	"build": {
+		"appId": "com.example.chat"
 	},
 	"dependencies": {
 		"nodejs-websocket": "^1.7.1",
@@ -23,12 +27,13 @@
 		"babel-preset-es2017": "^6.22.0",
 		"babel-preset-react": "^6.22.0",
 		"css-loader": "^0.28.0",
-		"style-loader": "^0.16.1",
-		"file-loader": "^0.11.1",
 		"devtron": "^1.4.0",
 		"electron": "^1.6.2",
+		"electron-builder": "^19.24.1",
 		"electron-debug": "^1.1.0",
 		"electron-devtools-installer": "^2.2.0",
+		"file-loader": "^0.11.1",
+		"style-loader": "^0.16.1",
 		"webpack": "^2.2.1"
 	}
 }

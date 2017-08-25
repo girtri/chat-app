@@ -1,9 +1,9 @@
 
-const { app, BrowserWindow } = require( "electron" ),
-	path = require( "path" ),
-	url = require( "url" );
+const {app, BrowserWindow} = require("electron"),
+	path = require("path"),
+	url = require("url");
 
-const { default: installExtension, REACT_DEVELOPER_TOOLS } = require( "electron-devtools-installer" );
+const {default: installExtension, REACT_DEVELOPER_TOOLS} = require("electron-devtools-installer");
 
 // Keep a global reference of the window object, if you don"t, the window will be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
@@ -15,35 +15,36 @@ function createWindow() {
     	.catch((err) => console.log("An error occurred: ", err));
 
 	mainWindow = new BrowserWindow({
-		width: 1000, height: 600
+		width: 1000, height: 600,
+		icon: path.join(__dirname, "icon-64x64.png")
 	});
 
 	// nascondo il menu di Electron!
 	mainWindow.setMenu(null);
 
-	mainWindow.loadURL( url.format({
-		pathname: path.join( __dirname, "index.html" ),
+	mainWindow.loadURL(url.format({
+		pathname: path.join(__dirname, "index.html" ),
 		protocol: "file:",
 		slashes: true
 	}) );
 
-	mainWindow.on( "closed", () => {
+	mainWindow.on("closed", () => {
 		mainWindow = null;
 	});
 }
 
-app.on( "ready", createWindow );
+app.on("ready", createWindow);
 
-app.on( "window-all-closed", () => {
+app.on("window-all-closed", () => {
 	if ( process.platform !== "darwin" ) {
 		app.quit();
 	}
 });
 
-app.on( "activate", () => {
+app.on("activate", () => {
 	if ( mainWindow === null ) {
 		createWindow();
 	}
 });
 
-require( "electron-debug" )();
+require("electron-debug")();
