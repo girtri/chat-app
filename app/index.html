@@ -7,8 +7,22 @@
 </head>
 <body>
 	<app></app>
+	<i id="statusbar" class="statusbar"></i>
 	<script>
 		require("./build/renderer.js");
+
+		// Listen for messages
+		const { ipcRenderer } = require("electron"),
+			statusbar = document.getElementById("statusbar");
+
+		ipcRenderer.on( "info", (ev, text) => {
+			statusbar.innerHTML = text;
+		});
+
+		ipcRenderer.on("update-downloaded", () => {
+			const ok = confirm('The application will automatically restart to finish installing the update');
+			ok && ipcRenderer.send("restart");
+		});
 	</script>
 </body>
 </html>

@@ -17,3 +17,9 @@
 .media-body__time {
 	float: right;
 }
+
+.statusbar {
+	position: absolute;
+	bottom: 1px;
+	left: 6px;
+}

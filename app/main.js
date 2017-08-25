@@ -1,8 +1,9 @@
 
-const {app, BrowserWindow} = require("electron"),
+const {app, BrowserWindow, ipcMain} = require("electron"),
 	path = require("path"),
 	url = require("url");
 
+const {autoUpdater} = require("electron-updater");
 const {default: installExtension, REACT_DEVELOPER_TOOLS} = require("electron-devtools-installer");
 
 // Keep a global reference of the window object, if you don"t, the window will be closed automatically when the JavaScript object is garbage collected.
@@ -46,5 +47,40 @@ app.on("activate", () => {
 		createWindow();
 	}
 });
+
+// inizio AUTO-UPDATER //
+function send(event, text = "") {
+	mainWindow && mainWindow.webContents.send(event, text);
+}
+
+autoUpdater.on("checking-for-update", () => {
+	send("info", "Checking for update...");
+});
+
+autoUpdater.on("update-available", () => {
+	send("info", "Update available");
+});
+
+autoUpdater.on("update-not-available", () => {
+	send("info", "Update not available");
+});
+
+autoUpdater.on("error", () => {
+	send("info", "Error in auto-updater");
+});
+
+autoUpdater.on("download-progress", () => {
+	send("info", "Download in progress...");
+});
+
+autoUpdater.on("update-downloaded", () => {
+	send("info", "Update downloaded");
+	send("update-downloaded");
+});
+
+ipcMain.on("restart", () => {
+	autoUpdater.quitAndInstall();
+});
+// fine AUTO-UPDATER //
 
 require("electron-debug")();
